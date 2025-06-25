@@ -26,7 +26,7 @@ In this guide, you will (1) Provision a new server with NGINX to forward request
 
 ## Provisioning from a blank server
 
-For this guide, I used Ubuntu Server 20 on DigitalOcean. You'll want to have set up PEM key authentication in SSH, if you don't know how to, [check out this guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-20-04). And don't forget to create a non-root user to run your apps under.
+For this guide, I used Ubuntu Server 24 on DigitalOcean. You'll want to have set up PEM key authentication in SSH, if you don't know how to, [check out this guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-20-04). And don't forget to create a non-root user to run your apps under.
 
 ``` bash
 adduser ubuntu && usermod -aG sudo ubuntu
