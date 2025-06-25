@@ -11,7 +11,7 @@ I love [mup](http://meteor-up.com/) and have been using it for years. It's the s
 
 <!--more-->
 
-> This guide was updated for Meteor 2.3 to 2.5, which have Node pinned at v14. Also added info on future upgrades.
+> This guide was updated for Meteor 3, which has Node pinned at v22. Also added info on future upgrades.
 
 ## Advantages of deploying manually
 
@@ -35,7 +35,7 @@ adduser ubuntu && usermod -aG sudo ubuntu
 Now let's get all the software installed onto the server...
 
 ``` bash
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo add-apt-repository ppa:nginx/stable
 sudo apt-get update
 sudo apt install -y nginx certbot python3-certbot-nginx nodejs jq build-essential
@@ -195,12 +195,6 @@ To ensure your sites start up when the server starts up, execute `pm2 startup` a
 Future versions of Meteor occasionally bump up the version of Node. If you're wondering, you can check the Meteor Node version with `meteor node --version`. Since we are not dealing with docker containers, if you use this approach you will have to operationalize your upgrade process. That process is as follows:
 
 1. Upgrade all your meteor projects locally and ensure they all work on the latest version of Meteor/Node.
-2. ssh into your server, take your websites offline, and update node:
-``` bash
-pm2 stop all 
-sudo apt update 
-sudo apt upgrade sudo reboot
-```
-
+2. ssh into your server, take your websites offline, and update node.
 3. Re-deploy all your meteor apps!
 4. Re-check that startup is still enabled with `pm2 startup`
