@@ -7,28 +7,29 @@ categories: ubuntu server
 Here is the song & dance I do every time I start a new Ubuntu server. Nice cheat sheet for me to refer back to.
 <!--more-->
 
-## Create non-root user & enable SSH
-
-If "ubuntu" user doesn't exist, create it:
-``` bash
-adduser ubuntu
-usermod -aG sudo ubuntu
-rsync --archive --chown=ubuntu:ubuntu ~/.ssh /home/ubuntu
-```
-
-Enable SSH: Set a password for the user and edit the SSH config file
-``` bash
-passwd ubuntu
-nano /etc/ssh/sshd_config
-```
-
-Remove the line "Import" blah blah blah
-Uncomment `AllowPasswordAuthentication yes`
-
 ## Install Tailscale
 
 ``` bash
 curl -fsSL https://tailscale.com/install.sh | sh
+```
+
+## Create non-root user & enable SSH
+
+Create `ubuntu` user:
+``` bash
+adduser ubuntu
+usermod -aG sudo ubuntu
+```
+
+Most hosts allow keys to be uploaded at time of vps creation. Copy the keys to the new user.
+
+``` bash
+rsync --archive --chown=ubuntu:ubuntu ~/.ssh /home/ubuntu
+```
+## Login as `ubuntu`
+
+``` bash
+ssh ubuntu@example
 ```
 
 ## Quiet the login message
@@ -40,8 +41,7 @@ touch .hushlogin
 ## For Meteor Apps
 
 ``` bash
-curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs jq build-essential
 sudo npm install -g pm2
 pm2 startup

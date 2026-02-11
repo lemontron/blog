@@ -7,7 +7,7 @@ modified: "2021-06-30"
 
 <img src="/assets/meteor-deployment.png" alt="Meteor deployment without Mup" class="banner"/>
 
-I love [mup](http://meteor-up.com/) and have been using it for years. It's the simplest way to get your meteor project deployed. However, when it comes to using binaries, things get complicated. Suddenly, creating your own deployment script becomes the less complicated option.
+You're probably familiar with [mup](http://meteor-up.com/) or even Galaxy, which make deployments pretty straightforward. However, when it comes to using binaries, things get complicated. Suddenly, creating your own deployment script becomes the less complicated option, but it brings with it an immense set of other benefits!
 
 <!--more-->
 
